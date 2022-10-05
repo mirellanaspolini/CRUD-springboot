@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head th:include="layout :: head"> </head>
+
+<body>
+    <nav th:replace="layout :: menu"></nav>
+    <a class="btn btn-primary" href="/clientes/novo">NOVO</a>
+    <main class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Endereço</th>
+                    <th>Sexo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="umCliente : ${listaClientes}">
+                    <td th:text="${umCliente.getId}"></td>
+                    <td th:text="${umCliente.getNome}"></td>
+                    <td th:text="${umCliente.getEndereco}"></td>
+                    <td th:text="${umCliente.getSexo}"></td>
+                    <td><a class="btn btn-warning" th:href="@{'/clientes/alterar/' + ${umCliente.id}}">Alterar</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+
+</html>

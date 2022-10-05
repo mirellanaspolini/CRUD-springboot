@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head th:include="layout :: head"> </head>
+
+<body>
+    <nav th:replace="layout :: menu"></nav>
+    <main class="container">
+        <a class="btn btn-primary" href="/cidades/novo">NOVO</a>
+
+        <table class="table">
+            <tr>
+                <td>ID</td>
+                <td>Nome</td>
+            </tr>
+            <tr th:each="umaCidade : ${listaCidades}">
+                <td th:text="${umaCidade.getId}"></td>
+                <td th:text="${umaCidade.getNome}"></td>
+                <td></td>
+            </tr>
+        </table>
+    </main>
+</body>
+
+</html>
