@@ -8,18 +8,44 @@
     <main class="container">
         <a class="btn btn-primary" href="/cidades/novo">NOVO</a>
 
-        <table class="table">
+        <table class="table" id="cidades">
             <tr>
-                <td>ID</td>
-                <td>Nome</td>
+                <th>ID</th>
+                <th>Nome</th>
+                <th></th>
             </tr>
             <tr th:each="umaCidade : ${listaCidades}">
                 <td th:text="${umaCidade.getId}"></td>
                 <td th:text="${umaCidade.getNome}"></td>
-                <td></td>
+                <td>
+                    <a class="btn btn-warning" th:href="@{'cidades/alterar/' + ${umaCidade.id}}">Alterar</a>
+                    <button class="btn btn-danger btnExcluirCidade" th:data-id="${umaCidade.id}">Excluir</button>
+                </td>
             </tr>
         </table>
     </main>
+
+    <div class="modal" tabindex="-1" id="modalExcluir">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Excluir cidade</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Tem certeza que quer excluir esta cidade?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnCancelar" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" id="btnExcluir" class="btn btn-primary">Excluir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer th:include="layout :: footer"></footer>
+    <script th:src="@{/script.js}"></script>
+    
 </body>
 
 </html>

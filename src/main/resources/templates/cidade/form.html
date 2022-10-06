@@ -8,6 +8,7 @@
     <main class="container">
         <form th:action="@{/cidades/(form)}" method="POST" th:object="${cidade}">
             <div class="form-group">
+                <input type="hidden" th:field="*{id}">
                 <label for="txtnome">Nome:</label>
                 <input id="txtnome" th:field="*{nome}" type="text" class=" form-control">
             </div>
